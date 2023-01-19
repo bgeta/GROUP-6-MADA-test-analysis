@@ -20,7 +20,7 @@ library(here) #to set paths
 ## ---- loaddata --------
 #path to data
 #note the use of the here() package and not absolute paths
-data_location <- here::here("data","raw_data","exampledata.xlsx")
+data_location <- here::here("data","raw_data","exampledata2.xlsx")
 
 #load data. 
 #note that for functions that come from specific packages (instead of base R)
@@ -68,6 +68,7 @@ d1 <- rawdata %>% dplyr::filter( Height != "sixty" ) %>%
 skimr::skim(d1)
 hist(d1$Height)
 
+head(d1)
 
 ## ---- cleandata2 --------
 # Now we see that there is one person with a height of 6. 
@@ -77,7 +78,7 @@ d2 <- d1 %>% dplyr::filter(Height != 6)
 
 #height values seem ok now
 skimr::skim(d2)
-
+list(d2)
 
 ## ---- cleandata3 --------
 # now let's look at weight
@@ -103,18 +104,22 @@ skimr::skim(d3)
 d4 <- d3 %>% dplyr::filter(Sex != "NA") %>% droplevels()
 skimr::skim(d4)
 
+list(d4)
+##RFE Smoker needs to be turned into a factor
+d4$'Smoker?' <- as.factor(d4$'Smoker?')  
+skimr::skim(d4)
 
+list(d4)
 
 ## ---- savedata --------
 # all done, data is clean now. 
 # Let's assign at the end to some final variable
 # makes it easier to add steps above
 processeddata <- d4
+
 # location to save file
 save_data_location <- here::here("data","processed_data","processeddata.rds")
 saveRDS(processeddata, file = save_data_location)
-
-
 
 ## ---- notes --------
 # anything you don't want loaded into the Quarto file but 
