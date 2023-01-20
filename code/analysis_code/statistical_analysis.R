@@ -53,4 +53,19 @@ print(lmtable2)
 table_file2 = here("results", "resulttable2.rds")
 saveRDS(lmtable2, file = table_file2)
 
-  
+###########################
+#### Boxplot
+# create a boxplot using height as the outcome, smoker status as predictor
+library('readxl')
+mydata_box = read_excel(here("data","raw_data","exampledata2_adjusted_vijay.xlsx"))
+ggplot(data = mydata_box, mapping = aes(x = Smoker, y = Height)) +
+    geom_boxplot() +
+    labs(x = "Smoker?", y = "Height")
+
+###########################
+#### Scatterplot
+# create a scatterplot using age as the outcome, weight as predictor
+
+ggplot(data = mydata, aes(x = Weight, y = Age)) +
+  geom_point()
+
