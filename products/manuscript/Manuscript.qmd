@@ -1,7 +1,7 @@
 ---
 title: "Example Manuscript Template for a Data Analysis Project"
 subtitle: ""
-author: Andreas Handel
+author: Andreas Handel/Group 6
 date: "`r Sys.Date()`"
 format:
   docx:
@@ -90,8 +90,6 @@ resulttable=readRDS("../../results/summarytable.rds")
 knitr::kable(resulttable)
 ```
 
-
-
 ## Basic statistical analysis
 
 _To get some further insight into your data, if reasonable you could compute simple statistics (e.g. simple models with 1 predictor) to look for associations between your outcome(s) and each individual predictor variable. Though note that unless you pre-specified the outcome and main exposure, any "p<0.05 means statistical significance" interpretation is not valid._
@@ -99,12 +97,23 @@ _To get some further insight into your data, if reasonable you could compute sim
 
 @fig-result shows a scatterplot figure produced by one of the R scripts.
 
+
 ```{r}
 #| label: fig-result
-#| fig-cap: "Height and weight stratified by sex."
+#| fig-cap: "Weight and Age."
 #| echo: FALSE
-knitr::include_graphics(here("results","height_weight_stratified.png"))
+knitr::include_graphics(here("results","scatterplot_weight_v_age.png"))
 ```
+
+
+
+```{r}
+#| label: fig-result2
+#| fig-cap: "Height and Smoking Status."
+#| echo: FALSE
+knitr::include_graphics(here("results","boxplot_smoking_v_height.png"))
+```
+
 
 
 ## Full analysis
